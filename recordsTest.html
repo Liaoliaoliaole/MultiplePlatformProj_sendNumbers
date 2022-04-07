@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Data collection</title>
+</head>
+
+<body>
+<h1>Data collection</h1>
+<div id ="content"></div>
+<canvas id="myChart" style="width:100%;max-width:600px"></canvas>
+
+
+<script>  
+  let url = 'https://www.cc.puv.fi/~e2102220/record.txt';
+  let storedText;
+  fetch(url)
+    .then( function(r){
+      r.text()
+      .then(function(t){
+        storedText = t;
+        printContent();
+        chart(extractNum());
+      });
+    }); 
+    
+  function printContent(){
+    console.log(storedText);
+    let replacedText = storedText.replace(/\r\n|\r|\n/g,"<br/>");//To replace \r, \n or \r\n globally to new line in html
+    document.getElementById("content").innerHTML = replacedText;
+  }
+
+  function userNums(date,time,min,max,user,ip){
+      this.date = date;
+      this.time = time;
+      this.min = min;
+      this.max = max;
+      this.user = user;
+      this.ip = ip;
+  }
+
+  function lineCount( text ) {
+    var nLines = 0;
+    for( var i = 0, n = text.length;  i < n;  ++i ) {
+        if( text[i] === '\n' ) {
+            ++nLines;
+        }
+    }
+    return nLines;
+}
+
+  function extractNum(){
+    let rplCommaT = storedText.replace(/,|\n/g," ");
+    let linesN = lineCount(storedText);
+    console.log(linesN);
+    console.log(rplCommaT);
+    let i=0; let j=0;
+    let userArr = [];
+    for(i=0 ; i < linesN; i++){
+      userArr[i] = new userNums;
+      userArr[i].date = rplCommaT.split(' ')[j];
+      userArr[i].time = rplCommaT.split(' ')[j+1];
+      userArr[i].min = rplCommaT.split(' ')[j+2];
+      userArr[i].max = rplCommaT.split(' ')[j+3];
+      userArr[i].user = rplCommaT.split(' ')[j+4];
+      userArr[i].ip = rplCommaT.split(' ')[j+5];
+      j=j+6;
+      }
+    console.log(userArr);
+    return userArr;
+  }
+
+  function chart(userArr){
+    let xValues = [];
+    let yValues1 = [];
+    let yValues2 =[];
+    let barColors = ["red", "green"];
+    for(let i=0;i<lineCount(storedText);i++){
+    xValues[i] = userArr[i].user;
+    yValues1[i] = userArr[i].min;
+    yValues2[i] = userArr[i].max;
+    }
+
+    new Chart("myChart", {
+      type: "bar",
+      data: {
+        labels: xValues,
+        datasets: [
+          {
+          backgroundColor: barColors[0],
+          data: yValues1,
+          },
+          {
+          backgroundColor: barColors[1],
+          data: yValues2,
+          }
+        ]
+      },
+      options: {
+        legend: {display: false},
+        title: {
+          display: true,
+          text: "User number monitoring system"
+          }
+        }
+      });
+  }
+
+
+
+    </script>
+
+</body>
+</html>
