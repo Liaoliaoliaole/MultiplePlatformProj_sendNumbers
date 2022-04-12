@@ -15,13 +15,24 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="wlanprj.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
     <ClCompile Include="main.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="wlanAly.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="sendNum.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
+    <Text Include="wlan.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="w.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
   </ItemGroup>
 </Project>

@@ -7,9 +7,11 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "sendHTTP", "sendHTTP\sendHT
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{C4072764-F272-4BBF-B45F-825BDF5A223F}"
 	ProjectSection(SolutionItems) = preProject
-		records.html = records.html
+		recordsTest.html = recordsTest.html
 		test.php = test.php
 	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "WlanProj", "WlanProj\WlanProj.vcxproj", "{28AF7999-8235-4A95-A941-D4855220B298}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,14 @@ Global
 		{E192699B-4F61-420D-B732-8EFBDFC899B9}.Release|x64.Build.0 = Release|x64
 		{E192699B-4F61-420D-B732-8EFBDFC899B9}.Release|x86.ActiveCfg = Release|Win32
 		{E192699B-4F61-420D-B732-8EFBDFC899B9}.Release|x86.Build.0 = Release|Win32
+		{28AF7999-8235-4A95-A941-D4855220B298}.Debug|x64.ActiveCfg = Debug|x64
+		{28AF7999-8235-4A95-A941-D4855220B298}.Debug|x64.Build.0 = Debug|x64
+		{28AF7999-8235-4A95-A941-D4855220B298}.Debug|x86.ActiveCfg = Debug|Win32
+		{28AF7999-8235-4A95-A941-D4855220B298}.Debug|x86.Build.0 = Debug|Win32
+		{28AF7999-8235-4A95-A941-D4855220B298}.Release|x64.ActiveCfg = Release|x64
+		{28AF7999-8235-4A95-A941-D4855220B298}.Release|x64.Build.0 = Release|x64
+		{28AF7999-8235-4A95-A941-D4855220B298}.Release|x86.ActiveCfg = Release|Win32
+		{28AF7999-8235-4A95-A941-D4855220B298}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

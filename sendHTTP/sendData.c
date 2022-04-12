@@ -7,7 +7,8 @@
 void send_data(rock r) {
 	CURL* curl;
 	CURLcode res;
-	char poststr[100];
+	char poststr[100];//it will contain three fields, so it must be long enough
+	//print information as string format
 	sprintf(poststr, "min=%d&max=%d&user=%s", r.min, r.max, r.rname);
 
 	curl = curl_easy_init();

@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{42f78652-af33-4854-89de-92c8fc00fcde}</ProjectGuid>
-    <RootNamespace>sendNumProj</RootNamespace>
+    <ProjectGuid>{28af7999-8235-4a95-a941-d4855220b298}</ProjectGuid>
+    <RootNamespace>WlanProj</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -139,10 +139,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="main.c" />
+    <ClInclude Include="wlanprj.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="sendNum.h" />
+    <ClCompile Include="main.c" />
+    <ClCompile Include="wlanAly.c" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="w.txt" />
+    <Text Include="wlan.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

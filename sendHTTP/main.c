@@ -8,6 +8,8 @@ int main() {
 	printf("Application Developers Rock!\n");
 	printf("Enter Rockers' name: ");
 	scanf_s("%s", r.rname, (unsigned)_countof(r.rname));
+	srand(time(NULL));
+	//rand() is automatically seeded with the a value of 1
 	r.max = rand() % 50 + 51;
 	r.min = rand() % 50 + 1;
 	send_data(r);

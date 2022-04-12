@@ -1,0 +1,48 @@
+ 
+Interface name : WiFi 
+There are 3 networks currently visible. 
+
+SSID 1 : GreenHW
+    Network type            : Infrastructure
+    Authentication          : WPA2-Personal
+    Encryption              : CCMP 
+    BSSID 1                 : 0c:96:bf:14:ac:50
+         Signal             : 84%  
+         Radio type         : 802.11n
+         Band               : 2.4 GHz
+         Channel            : 8 
+         Basic rates (Mbps) : 1 2 5.5 11
+         Other rates (Mbps) : 6 9 12 18 24 36 48 54
+
+SSID 2 : Koti_1699
+    Network type            : Infrastructure
+    Authentication          : WPA2-Personal
+    Encryption              : CCMP 
+    BSSID 1                 : b8:ec:a3:07:16:99
+         Signal             : 46%  
+         Radio type         : 802.11n
+         Band               : 2.4 GHz
+         Channel            : 11 
+         Bss Load:
+             Connected Stations:         0
+             Channel Utilization:        38 (14 %)
+             Medium Available Capacity:  0 (0 us/s)
+         Basic rates (Mbps) : 1 2 5.5 11
+         Other rates (Mbps) : 6 9 12 18 24 36 48 54
+
+SSID 3 : GreenHouse_5G
+    Network type            : Infrastructure
+    Authentication          : WPA2-Personal
+    Encryption              : CCMP 
+    BSSID 1                 : b0:be:76:79:62:52
+         Signal             : 40%  
+         Radio type         : 802.11ac
+         Band               : 5 GHz
+         Channel            : 36 
+         Bss Load:
+             Connected Stations:         6
+             Channel Utilization:        10 (3 %)
+             Medium Available Capacity:  0 (0 us/s)
+         Basic rates (Mbps) : 6 12 24
+         Other rates (Mbps) : 9 18 36 48 54
+

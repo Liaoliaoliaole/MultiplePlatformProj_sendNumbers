@@ -1,0 +1,116 @@
+ 
+Interface name : WiFi 
+There are 8 networks currently visible. 
+
+SSID 1 : GreenHouse_5G_plus_5G
+    Network type            : Infrastructure
+    Authentication          : WPA2-Personal
+    Encryption              : CCMP 
+    BSSID 1                 : ec:41:18:04:f5:22
+         Signal             : 72%  
+         Radio type         : 802.11ac
+         Band               : 5 GHz
+         Channel            : 36 
+         Basic rates (Mbps) : 6 12 24
+         Other rates (Mbps) : 9 18 36 48 54
+
+SSID 2 : GreenHW_5G
+    Network type            : Infrastructure
+    Authentication          : WPA2-Personal
+    Encryption              : CCMP 
+    BSSID 1                 : 0c:96:bf:14:ac:54
+         Signal             : 80%  
+         Radio type         : 802.11ac
+         Band               : 5 GHz
+         Channel            : 149 
+         Basic rates (Mbps) : 6 12 24
+         Other rates (Mbps) : 9 18 36 48 54
+
+SSID 3 : Koti_1699
+    Network type            : Infrastructure
+    Authentication          : WPA2-Personal
+    Encryption              : CCMP 
+    BSSID 1                 : b8:ec:a3:07:16:99
+         Signal             : 26%  
+         Radio type         : 802.11n
+         Band               : 2.4 GHz
+         Channel            : 11 
+         Bss Load:
+             Connected Stations:         0
+             Channel Utilization:        10 (3 %)
+             Medium Available Capacity:  0 (0 us/s)
+         Basic rates (Mbps) : 1 2 5.5 11
+         Other rates (Mbps) : 6 9 12 18 24 36 48 54
+
+SSID 4 : GreenHW
+    Network type            : Infrastructure
+    Authentication          : WPA2-Personal
+    Encryption              : CCMP 
+    BSSID 1                 : 0c:96:bf:14:ac:50
+         Signal             : 85%  
+         Radio type         : 802.11n
+         Band               : 2.4 GHz
+         Channel            : 8 
+         Basic rates (Mbps) : 1 2 5.5 11
+         Other rates (Mbps) : 6 9 12 18 24 36 48 54
+
+SSID 5 : GreenHouse_5G_plus
+    Network type            : Infrastructure
+    Authentication          : WPA2-Personal
+    Encryption              : CCMP 
+    BSSID 1                 : ec:41:18:04:f5:21
+         Signal             : 83%  
+         Radio type         : 802.11ac
+         Band               : 2.4 GHz
+         Channel            : 8 
+         Bss Load:
+             Connected Stations:         1
+             Channel Utilization:        0 (0 %)
+             Medium Available Capacity:  31250 (1000000 us/s)
+         Basic rates (Mbps) : 1 2 5.5 11
+         Other rates (Mbps) : 6 9 12 18 24 36 48 54
+
+SSID 6 : GreenHouse
+    Network type            : Infrastructure
+    Authentication          : WPA2-Personal
+    Encryption              : CCMP 
+    BSSID 1                 : b0:be:76:79:62:53
+         Signal             : 53%  
+         Radio type         : 802.11n
+         Band               : 2.4 GHz
+         Channel            : 1 
+         Bss Load:
+             Connected Stations:         2
+             Channel Utilization:        24 (9 %)
+             Medium Available Capacity:  0 (0 us/s)
+         Basic rates (Mbps) : 1 2 5.5 11
+         Other rates (Mbps) : 6 9 12 18 24 36 48 54
+
+SSID 7 : 
+    Network type            : Infrastructure
+    Authentication          : Open
+    Encryption              : None 
+    BSSID 1                 : fa:8f:ca:36:77:c8
+         Signal             : 35%  
+         Radio type         : 802.11n
+         Band               : 5 GHz
+         Channel            : 36 
+         Basic rates (Mbps) : 6 12 24
+         Other rates (Mbps) : 9 18 36 48 54
+
+SSID 8 : GreenHouse_5G
+    Network type            : Infrastructure
+    Authentication          : WPA2-Personal
+    Encryption              : CCMP 
+    BSSID 1                 : b0:be:76:79:62:52
+         Signal             : 38%  
+         Radio type         : 802.11ac
+         Band               : 5 GHz
+         Channel            : 36 
+         Bss Load:
+             Connected Stations:         7
+             Channel Utilization:        22 (8 %)
+             Medium Available Capacity:  0 (0 us/s)
+         Basic rates (Mbps) : 6 12 24
+         Other rates (Mbps) : 9 18 36 48 54
+
