@@ -146,7 +146,6 @@
     <ClCompile Include="wlanAly.c" />
   </ItemGroup>
   <ItemGroup>
-    <Text Include="w.txt" />
     <Text Include="wlan.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

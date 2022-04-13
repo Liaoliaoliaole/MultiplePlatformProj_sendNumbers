@@ -31,8 +31,5 @@
     <Text Include="wlan.txt">
       <Filter>Resource Files</Filter>
     </Text>
-    <Text Include="w.txt">
-      <Filter>Resource Files</Filter>
-    </Text>
   </ItemGroup>
 </Project>
