@@ -9,29 +9,32 @@
 void wlan_analyse(FILE* fp) {
 	int ssidNum = wlan_count(fp);
 	ssid* ssid_list = (ssid*)malloc(sizeof(ssid) * ssidNum);
-	char buf[MAXCHAR] = { '\0' };
-	int lc = 0;
-	int i = 0,j =0;
-	while (fgets(buf, MAXCHAR, fp)) {
+	if (ssid_list == NULL) {
+		printf("error in malloc");
+		return;
+	}
+	char buf[MAXCHAR];
+	int lc = 0, i = 0,j =0;//i is ssid count, j is ap count.lc is line count.
+	while (fgets(buf, MAXCHAR, fp) != NULL) {
 		enum LINE_TYPE tmp = what_line(buf);
-		if (tmp == UNKNOWN || buf[0] == '\n') {
-			continue;//ignore uknown and empty line
-		}
+		//if (tmp == UNKNOWN || buf[0] == '\n') {
+		//	continue;//ignore uknown and empty line
+		//}
 	    if ((lc>=4) && (tmp == SSID)) {
+			if (j != 0) { i++; }
 			j = 0;
-			ssid_list[i].ssidnm[30] = read_value(buf);
-			ssid_list[i].num_ap = j;
-			i++;
+			strcpy(ssid_list[i].ssidnm,read_value(buf));
+			ssid_list[i].num_ap = j;	
 		}
 		else if ((lc >= 4) && (tmp == BSSID)) {
-			ssid_list[i].aplist[j].apmac[20] = read_value(buf);
-			j++;
+			strcpy(ssid_list[i].aplist[j].apmac,read_value(buf));
 		}
 		else if ((lc >= 4) && (tmp == SIG)) {
-			ssid_list[i].aplist[j].signal_strength = read_value(buf);
+			ssid_list[i].aplist[j].signal_strength = atoi(read_value(buf));
 		}
 		else if ((lc >= 4) && (tmp == CH)) {
-			ssid_list[i].aplist[j].channel = read_value(buf);
+			ssid_list[i].aplist[j].channel = atoi(read_value(buf));
+			j++;
 		}
 		lc++;
 	}
@@ -56,9 +59,19 @@ int wlan_count(FILE* fp) {
 }
 
 char* read_value(char* buf) {
-	char value[200];
-	sscanf(buf, "%*[^:]/%[^\n]", value);
-	return value;
+	char value[30];
+	char* v = value;
+	char* p = buf;
+	if (p = strchr(buf, ':')) {
+		size_t len = strlen(++p);
+		if (len > 29) {     /* check if length exceeds available */
+			fputs("error: string exceeds allowable length.\n", stderr);
+			return 1;
+		}
+		memcpy(v, p, len + 1);
+		return v;
+	}
+	
 }
 enum LINE_TYPE what_line(char* buf) {
 	char keyword[20];
@@ -78,9 +91,8 @@ void show_wlan(ssid* list, int ssidc) {
 	for (int i = 0; i < ssidc; i++) {
 		printf("ESSID: %s", list[i].ssidnm);
 		printf("\n");
-		printf("\t");
-		for (int j = 0; j < list[i].num_ap; j++) {
-			printf("AP %d MAC: %s\tChannel: %d, Signal: %d",j + 1, list[i].aplist[j].apmac, list[i].aplist[j].channel, list[i].aplist[j].signal_strength);
+		for (int j = 0; j < (list[i].num_ap + 1); j++) {
+			printf("AP %d MAC: %s  Channel: %d, Signal: %d",j + 1, list[i].aplist[j].apmac, list[i].aplist[j].channel, list[i].aplist[j].signal_strength);
 		}
 		printf("\n");
 	}
