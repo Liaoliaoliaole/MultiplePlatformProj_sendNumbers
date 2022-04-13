@@ -1,8 +1,6 @@
 #pragma once
 #define CMD "netsh wlan show networks mode=bssid > wlan.txt"
-
 #define MAXCHAR 1024
-#define MAXCW 25
 
 enum LINE_TYPE {UNKNOWN =-1, SSID, NET, AUTH, ENCRYP, BSSID, SIG, RADIO, CH};
 
@@ -15,7 +13,7 @@ typedef struct {
 typedef struct {
 	char ssidnm[30];//name of WLAN(SSID)
 	int num_ap;//number of aps
-    bssid aplist[20 ];//a list of APs(dynamics)
+    bssid aplist[20];//a list of APs(dynamics)
 }ssid;
 
 
@@ -25,5 +23,4 @@ int wlan_count(FILE*);
 char* read_value(char*);
 enum LINE_TYPE what_line(char*);
 void show_wlan(ssid*, int);
-//void takeawaynewline(char*);
 

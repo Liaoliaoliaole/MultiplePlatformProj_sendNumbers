@@ -9,36 +9,35 @@
 void wlan_analyse(FILE* fp) {
 	int ssidNum = wlan_count(fp);
 	ssid* ssid_list = (ssid*)malloc(sizeof(ssid) * ssidNum);
-	char buf[MAXCHAR];
-	int lc = 0;//line count
-	int i = 0;
+	char buf[MAXCHAR] = { '\0' };
+	int lc = 0;
+	int i = 0,j =0;
 	while (fgets(buf, MAXCHAR, fp)) {
-		//if (buf[0] == '\n') continue;//ignore empty line
 		enum LINE_TYPE tmp = what_line(buf);
-		//if (tmp == UNKNOWN) continue;//ignore uknown information line
-	    if (lc>3 && tmp == SSID) {
-			ssid_list[i].num_ap = i+1;
-			ssid_list[i].ssidnm = read_value(buf,SSID);
+		if (tmp == UNKNOWN || buf[0] == '\n') {
+			continue;//ignore uknown and empty line
+		}
+	    if ((lc>=4) && (tmp == SSID)) {
+			j = 0;
+			ssid_list[i].ssidnm[30] = read_value(buf);
+			ssid_list[i].num_ap = j;
 			i++;
 		}
-
-
-
-
-
-
+		else if ((lc >= 4) && (tmp == BSSID)) {
+			ssid_list[i].aplist[j].apmac[20] = read_value(buf);
+			j++;
+		}
+		else if ((lc >= 4) && (tmp == SIG)) {
+			ssid_list[i].aplist[j].signal_strength = read_value(buf);
+		}
+		else if ((lc >= 4) && (tmp == CH)) {
+			ssid_list[i].aplist[j].channel = read_value(buf);
+		}
 		lc++;
 	}
 	
-
-	
-	
-	
-	
-	
-	printf("Found %d WLANs", ssidNum);
-	printf("\n");
-
+	show_wlan(ssid_list, ssidNum);
+	free(ssid_list);
 }
 
 int wlan_count(FILE* fp) {
@@ -56,19 +55,14 @@ int wlan_count(FILE* fp) {
 	return n;
 }
 
-
-////int wlan_number(char*);
-char* read_value(char* buf,char* kw) {
-	char* token = strtok(buf, ":");
-
-
-	
+char* read_value(char* buf) {
+	char value[200];
+	sscanf(buf, "%*[^:]/%[^\n]", value);
+	return value;
 }
 enum LINE_TYPE what_line(char* buf) {
-	char keyword[MAXCW];
-	//read buf，renturn keyword，same as one of enum type
+	char keyword[20];
 	sscanf(buf, "%s", keyword);
-	//if type fit call function rea-value,
 	if (strcmp(keyword, "SSID") == 0) return SSID;
 	else if (strcmp(keyword, "Network") == 0) return NET;
 	else if (strcmp(keyword, "Authentication") == 0) return AUTH;
@@ -78,8 +72,16 @@ enum LINE_TYPE what_line(char* buf) {
 	else if (strcmp(keyword, "Channel") == 0) return CH;
 	else return UNKNOWN;
 }
-//void show_wlan(ssid* list, int typ) {
-//
-//	//show in each ssid (AP 123...)
-//}
-////void takeawaynewline(char*);
+void show_wlan(ssid* list, int ssidc) {
+	printf("Found %d WLANs", ssidc);
+	printf("\n");
+	for (int i = 0; i < ssidc; i++) {
+		printf("ESSID: %s", list[i].ssidnm);
+		printf("\n");
+		printf("\t");
+		for (int j = 0; j < list[i].num_ap; j++) {
+			printf("AP %d MAC: %s\tChannel: %d, Signal: %d",j + 1, list[i].aplist[j].apmac, list[i].aplist[j].channel, list[i].aplist[j].signal_strength);
+		}
+		printf("\n");
+	}
+}

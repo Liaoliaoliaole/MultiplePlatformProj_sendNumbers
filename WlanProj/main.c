@@ -10,4 +10,5 @@ int main() {
 		fclose(fp);
 	}
 	else printf("Error: wlan.txt file doesn't exist!");
+
 }
