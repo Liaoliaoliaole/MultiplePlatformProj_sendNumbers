@@ -5,17 +5,17 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Data collection</title>
+<title>e2102220-LiyuanLiu</title>
 </head>
 
 <body>
 <h1>Data collection</h1>
 <div id ="content"></div>
-<canvas id="myChart" style="width:100%;max-width:600px"></canvas>
+<canvas id="myChart" style="width:100%;max-width:1000px"></canvas>
 
 
 <script>  
-  let url = 'https://www.cc.puv.fi/~e2102220/record.txt';
+  let url = 'http://www.cc.puv.fi/~e2102220/record.txt';
   let storedText;
   fetch(url)
     .then( function(r){
@@ -77,9 +77,9 @@
     let xValues = [];
     let yValues1 = [];
     let yValues2 =[];
-    let barColors = ["red", "green"];
+    let barColors = ["blue", "green"];
     for(let i=0;i<lineCount(storedText);i++){
-    xValues[i] = userArr[i].user;
+    xValues[i] = userArr[i].user + ' ' + userArr[i].time + ' ' + userArr[i].date;
     yValues1[i] = userArr[i].min;
     yValues2[i] = userArr[i].max;
     }
@@ -108,10 +108,7 @@
         }
       });
   }
-
-
-
-    </script>
+  </script>
 
 </body>
 </html>
