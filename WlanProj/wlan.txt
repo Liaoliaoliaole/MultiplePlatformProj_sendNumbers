@@ -1,80 +1,56 @@
  
 Interface name : WiFi 
-There are 5 networks currently visible. 
+There are 4 networks currently visible. 
 
-SSID 1 : GreenHouse_5G_plus_5G
+SSID 1 : 
     Network type            : Infrastructure
-    Authentication          : WPA2-Personal
-    Encryption              : CCMP 
-    BSSID 1                 : ec:41:18:04:f5:22
-         Signal             : 57%  
-         Radio type         : 802.11ac
+    Authentication          : Open
+    Encryption              : None 
+    BSSID 1                 : fa:8f:ca:36:77:c8
+         Signal             : 38%  
+         Radio type         : 802.11n
          Band               : 5 GHz
          Channel            : 36 
-         Bss Load:
-             Connected Stations:         1
-             Channel Utilization:        0 (0 %)
-             Medium Available Capacity:  31250 (1000000 us/s)
          Basic rates (Mbps) : 6 12 24
          Other rates (Mbps) : 9 18 36 48 54
 
-SSID 2 : GreenHouse_5G
-    Network type            : Infrastructure
-    Authentication          : WPA2-Personal
-    Encryption              : CCMP 
-    BSSID 1                 : b0:be:76:79:62:52
-         Signal             : 29%  
-         Radio type         : 802.11ac
-         Band               : 5 GHz
-         Channel            : 36 
-         Bss Load:
-             Connected Stations:         4
-             Channel Utilization:        10 (3 %)
-             Medium Available Capacity:  0 (0 us/s)
-         Basic rates (Mbps) : 6 12 24
-         Other rates (Mbps) : 9 18 36 48 54
-
-SSID 3 : GreenHW
+SSID 2 : GreenHW
     Network type            : Infrastructure
     Authentication          : WPA2-Personal
     Encryption              : CCMP 
     BSSID 1                 : 0c:96:bf:14:ac:50
-         Signal             : 88%  
+         Signal             : 86%  
          Radio type         : 802.11n
          Band               : 2.4 GHz
          Channel            : 8 
          Basic rates (Mbps) : 1 2 5.5 11
          Other rates (Mbps) : 6 9 12 18 24 36 48 54
 
-SSID 4 : GreenHouse_5G_plus
+SSID 3 : GreenHouse_5G_plus
     Network type            : Infrastructure
     Authentication          : WPA2-Personal
     Encryption              : CCMP 
     BSSID 1                 : ec:41:18:04:f5:21
-         Signal             : 82%  
+         Signal             : 87%  
          Radio type         : 802.11ac
          Band               : 2.4 GHz
          Channel            : 8 
          Bss Load:
-             Connected Stations:         2
+             Connected Stations:         1
              Channel Utilization:        0 (0 %)
              Medium Available Capacity:  31250 (1000000 us/s)
          Basic rates (Mbps) : 1 2 5.5 11
          Other rates (Mbps) : 6 9 12 18 24 36 48 54
 
-SSID 5 : GreenHouse
+SSID 4 : GreenHW_5G
     Network type            : Infrastructure
     Authentication          : WPA2-Personal
     Encryption              : CCMP 
-    BSSID 1                 : b0:be:76:79:62:53
-         Signal             : 65%  
-         Radio type         : 802.11n
-         Band               : 2.4 GHz
-         Channel            : 1 
-         Bss Load:
-             Connected Stations:         3
-             Channel Utilization:        47 (18 %)
-             Medium Available Capacity:  0 (0 us/s)
-         Basic rates (Mbps) : 1 2 5.5 11
-         Other rates (Mbps) : 6 9 12 18 24 36 48 54
+    BSSID 1                 : 0c:96:bf:14:ac:54
+         Signal             : 67%  
+         Radio type         : 802.11ac
+         Band               : 5 GHz
+         Channel            : 149 
+         Basic rates (Mbps) : 6 12 24
+         Other rates (Mbps) : 9 18 36 48 54
 
