@@ -17,9 +17,6 @@ void wlan_analyse(FILE* fp) {
 	int lc = 0, i = 0,j =0;//i is ssid count, j is ap count.lc is line count.
 	while (fgets(buf, MAXCHAR, fp) != NULL) {
 		enum LINE_TYPE tmp = what_line(buf);
-		//if (tmp == UNKNOWN || buf[0] == '\n') {
-		//	continue;//ignore uknown and empty line
-		//}
 	    if ((lc>=4) && (tmp == SSID)) {
 			if (j != 0) { i++; }
 			j = 0;
@@ -64,12 +61,12 @@ char* read_value(char* buf) {
 	char* p = buf;
 	if (p = strchr(buf, ':')) {
 		size_t len = strlen(++p);
-		if (len > 29) {     /* check if length exceeds available */
-			fputs("error: string exceeds allowable length.\n", stderr);
+		if (len > 29) {
+			fputs("error: value exceeds allowable length.\n", stderr);
 			return 1;
 		}
 		memcpy(v, p, len + 1);
-		return v;
+		return takeawaynewline(v);
 	}
 	
 }
@@ -86,14 +83,22 @@ enum LINE_TYPE what_line(char* buf) {
 	else return UNKNOWN;
 }
 void show_wlan(ssid* list, int ssidc) {
-	printf("Found %d WLANs", ssidc);
+	printf("Found %d WLANs\n", ssidc);
 	printf("\n");
 	for (int i = 0; i < ssidc; i++) {
 		printf("ESSID: %s", list[i].ssidnm);
 		printf("\n");
 		for (int j = 0; j < (list[i].num_ap + 1); j++) {
-			printf("AP %d MAC: %s  Channel: %d, Signal: %d",j + 1, list[i].aplist[j].apmac, list[i].aplist[j].channel, list[i].aplist[j].signal_strength);
+			printf("AP %d MAC: %s  Channel: %d, Signal: %d%c",j + 1, list[i].aplist[j].apmac, list[i].aplist[j].channel, list[i].aplist[j].signal_strength, '%');
 		}
-		printf("\n");
+		printf("\n\n");
 	}
+}
+
+char* takeawaynewline(char* value) {
+	int len = strlen(value);
+	if (value[len - 1] == '\n') {
+		value[len - 1] = 0;
+	}
+	return value;
 }
