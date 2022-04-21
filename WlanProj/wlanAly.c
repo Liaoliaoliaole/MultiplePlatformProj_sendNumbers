@@ -1,7 +1,4 @@
-﻿#define _CRT_SECURE_NO_WARNINGS
-#include <stdio.h>
-#include <stdlib.h>//for malloc/free
-#include <string.h>
+﻿
 #include "wlanprj.h"
 
 void wlan_analyse(FILE* fp) {
@@ -15,11 +12,15 @@ void wlan_analyse(FILE* fp) {
 	int lc = 0, i = 0,j =0;//i is ssid count, j is ap count.lc is line count.
 	while (fgets(buf, MAXCHAR, fp) != NULL) {
 		enum LINE_TYPE tmp = what_line(buf);
-	    if ((lc>=4) && (tmp == SSID)) {
-			if (j != 0) { i++; }
-			j = 0;
+		if ((lc >= 4) && (tmp == SSID)) {
+			if (j > 0) { 
+				i++; 	
+			}
+			if (i > 0) { 
+				j = 0; 
+			}
 			strcpy(ssid_list[i].ssidnm,read_value(buf));
-			ssid_list[i].num_ap = j;	
+			//ssid_list[i].num_ap = j;	
 		}
 		else if ((lc >= 4) && (tmp == NET)) {
 			strcpy(ssid_list[i].ssid_net, read_value(buf));
@@ -39,6 +40,7 @@ void wlan_analyse(FILE* fp) {
 		else if ((lc >= 4) && (tmp == CH)) {
 			ssid_list[i].aplist[j].channel = atoi(read_value(buf));
 			j++;
+			ssid_list[i].num_ap = j-1;
 		}
 		lc++;
 	}
@@ -61,12 +63,12 @@ int wlan_count(FILE* fp) {
 	return n;
 }
 char* read_value(char* buf) {
-	char value[30];
+	char value[40];
 	char* v = value;
 	char* p = buf;
 	if (p = strchr(buf, ':')) {
 		size_t len = strlen(++p);
-		if (len > 29) {
+		if (len > 39) {
 			fputs("error: value exceeds allowable length.\n", stderr);
 			return 1;
 		}
@@ -77,14 +79,16 @@ char* read_value(char* buf) {
 }
 enum LINE_TYPE what_line(char* buf) {
 	char keyword[20];
-	sscanf(buf, "%s", keyword);
+	char sc[20];
+	sscanf(buf, "%s %s", keyword,sc);
 	if (strcmp(keyword, "SSID") == 0) return SSID;
 	else if (strcmp(keyword, "Network") == 0) return NET;
 	else if (strcmp(keyword, "Authentication") == 0) return AUTH;
 	else if (strcmp(keyword, "Encryption") == 0) return ENCRYP;
 	else if (strcmp(keyword, "BSSID") == 0) return BSSID;
 	else if (strcmp(keyword, "Signal") == 0) return SIG;
-	else if (strcmp(keyword, "Channel") == 0) return CH;
+	//else if (strcmp(keyword, "Channel") == 0) return CH;
+	else if (strcmp(keyword, "Channel") == 0 && sc[0] == ':') return CH;
 	else return UNKNOWN;
 }
 void show_wlan(ssid* list, int ssidc) {

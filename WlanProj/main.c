@@ -1,5 +1,4 @@
-#define _CRT_SECURE_NO_WARNINGS
-#include <stdio.h>
+
 #include "wlanprj.h"
 
 int main() {
@@ -10,5 +9,4 @@ int main() {
 		fclose(fp);
 	}
 	else printf("Error: wlan.txt file doesn't exist!");
-
 }
