@@ -7,7 +7,21 @@ SSID 1 : GreenHW
     Authentication          : WPA2-Personal
     Encryption              : CCMP 
     BSSID 1                 : 0c:96:bf:14:ac:50
+         Signal             : 4%  
+         Radio type         : 802.11n
+         Band               : 2.4 GHz
+         Channel            : 8 
+         Basic rates (Mbps) : 1 2 5.5 11
+         Other rates (Mbps) : 6 9 12 18 24 36 48 54
+    BSSID 2                 : 0c:96:bf:14:ac:50
          Signal             : 84%  
+         Radio type         : 802.11n
+         Band               : 2.4 GHz
+         Channel            : 8 
+         Basic rates (Mbps) : 1 2 5.5 11
+         Other rates (Mbps) : 6 9 12 18 24 36 48 54
+    BSSID 3                 : 0c:96:bf:14:ac:50
+         Signal             : 80%  
          Radio type         : 802.11n
          Band               : 2.4 GHz
          Channel            : 8 
@@ -31,6 +45,50 @@ SSID 3 : Koti_1699
     Authentication          : WPA2-Personal
     Encryption              : CCMP 
     BSSID 1                 : b8:ec:a3:07:16:99
+         Signal             : 57%  
+         Radio type         : 802.11n
+         Band               : 2.4 GHz
+         Channel            : 11 
+         Bss Load:
+             Connected Stations:         1
+             Channel Utilization:        12 (4 %)
+             Medium Available Capacity:  0 (0 us/s)
+         Basic rates (Mbps) : 1 2 5.5 11
+         Other rates (Mbps) : 6 9 12 18 24 36 48 54
+    BSSID 2                 : b8:ec:a3:07:16:99
+         Signal             : 5%  
+         Radio type         : 802.11n
+         Band               : 2.4 GHz
+         Channel            : 11 
+         Bss Load:
+             Connected Stations:         1
+             Channel Utilization:        12 (4 %)
+             Medium Available Capacity:  0 (0 us/s)
+         Basic rates (Mbps) : 1 2 5.5 11
+         Other rates (Mbps) : 6 9 12 18 24 36 48 54
+    BSSID 3                 : b8:ec:a3:07:16:99
+         Signal             : 90%  
+         Radio type         : 802.11n
+         Band               : 2.4 GHz
+         Channel            : 11 
+         Bss Load:
+             Connected Stations:         1
+             Channel Utilization:        12 (4 %)
+             Medium Available Capacity:  0 (0 us/s)
+         Basic rates (Mbps) : 1 2 5.5 11
+         Other rates (Mbps) : 6 9 12 18 24 36 48 54
+    BSSID 4                 : b8:ec:a3:07:16:99
+         Signal             : 55%  
+         Radio type         : 802.11n
+         Band               : 2.4 GHz
+         Channel            : 11 
+         Bss Load:
+             Connected Stations:         1
+             Channel Utilization:        12 (4 %)
+             Medium Available Capacity:  0 (0 us/s)
+         Basic rates (Mbps) : 1 2 5.5 11
+         Other rates (Mbps) : 6 9 12 18 24 36 48 54
+    BSSID 5                 : b8:ec:a3:07:16:99
          Signal             : 57%  
          Radio type         : 802.11n
          Band               : 2.4 GHz

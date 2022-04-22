@@ -31,4 +31,5 @@ enum LINE_TYPE what_line(char*);
 void show_wlan(ssid*, int);
 char* takeawaynewline(char*);
 int dBm_calculation(int);
-void sort_by_signal(int number[], int n);
+int cmp_by_signal(const void* a, const void* b);
+

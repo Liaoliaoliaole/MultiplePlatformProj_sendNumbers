@@ -14,13 +14,11 @@ void wlan_analyse(FILE* fp) {
 		enum LINE_TYPE tmp = what_line(buf);
 		if ((lc >= 4) && (tmp == SSID)) {
 			if (j > 0) { 
-				i++; 	
-			}
-			if (i > 0) { 
-				j = 0; 
+				i++;
+				j = 0;
 			}
 			strcpy(ssid_list[i].ssidnm,read_value(buf));
-			//ssid_list[i].num_ap = j;	
+			ssid_list[i].num_ap = j;	
 		}
 		else if ((lc >= 4) && (tmp == NET)) {
 			strcpy(ssid_list[i].ssid_net, read_value(buf));
@@ -36,6 +34,7 @@ void wlan_analyse(FILE* fp) {
 		}
 		else if ((lc >= 4) && (tmp == SIG)) {
 			ssid_list[i].aplist[j].signal_strength = dBm_calculation(atoi(read_value(buf)));
+
 		}
 		else if ((lc >= 4) && (tmp == CH)) {
 			ssid_list[i].aplist[j].channel = atoi(read_value(buf));
@@ -79,16 +78,15 @@ char* read_value(char* buf) {
 }
 enum LINE_TYPE what_line(char* buf) {
 	char keyword[20];
-	char sc[20];
-	sscanf(buf, "%s %s", keyword,sc);
+	char secondK[20];
+	sscanf(buf, "%s %s", keyword,secondK);
 	if (strcmp(keyword, "SSID") == 0) return SSID;
 	else if (strcmp(keyword, "Network") == 0) return NET;
 	else if (strcmp(keyword, "Authentication") == 0) return AUTH;
 	else if (strcmp(keyword, "Encryption") == 0) return ENCRYP;
 	else if (strcmp(keyword, "BSSID") == 0) return BSSID;
 	else if (strcmp(keyword, "Signal") == 0) return SIG;
-	//else if (strcmp(keyword, "Channel") == 0) return CH;
-	else if (strcmp(keyword, "Channel") == 0 && sc[0] == ':') return CH;
+	else if (strcmp(keyword, "Channel") == 0 && secondK[0] == ':') return CH;
 	else return UNKNOWN;
 }
 void show_wlan(ssid* list, int ssidc) {
@@ -100,9 +98,10 @@ void show_wlan(ssid* list, int ssidc) {
 		printf("\n\tAuthentication: %s", list[i].ssid_aut);
 		printf("\n\tEncryption: %s\n", list[i].ssid_encr);
 		printf("\n");
-		sort_by_signal(list[i].aplist[list[i].num_ap+1].signal_strength, list[i].num_ap + 1);
+		
+		qsort(list[i].aplist, list[i].num_ap+1, sizeof(bssid), cmp_by_signal);
 		for (int j = 0; j < (list[i].num_ap + 1); j++) {
-			printf("\tAP %d MAC: %s  Channel: %d, Signal: %ddBm",j + 1, list[i].aplist[j].apmac, list[i].aplist[j].channel, list[i].aplist[j].signal_strength);
+			printf("\tAP %d MAC: %s  Channel: %d, Signal: %ddBm\n",j + 1, list[i].aplist[j].apmac, list[i].aplist[j].channel, list[i].aplist[j].signal_strength);
 		}
 		printf("\n\n");
 	}
@@ -119,18 +118,10 @@ int dBm_calculation(int sig) {
 	return dBm;
 }
 
-void sort_by_signal(int number[], int n) {
-	int tmp;
-	for (int i = 0; i < n; ++i)
-	{
-		for (int j = i + 1; j < n; ++j)
-		{
-			if (number[i] < number[j])
-			{
-				tmp = number[i];
-				number[i] = number[j];
-				number[j] = tmp;
-			}
-		}
-	}
+int cmp_by_signal(const void* a, const void* b)
+{
+	bssid* first = a;
+	bssid* second = b;
+	//return (second->signal_strength < first->signal_strength) - (first->signal_strength < second->signal_strength);
+	return (first->signal_strength - second->signal_strength);
 }
